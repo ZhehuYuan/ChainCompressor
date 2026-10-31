@@ -296,12 +296,12 @@ def realPSNR(original_data, decompressed_data):
 
 
 def testCPU():
-            # DamnBreak
+            # Dam Break
             ts = [4, 25, 22, 25] 
             ps = [256, 4, 16, 16]
             qbs = [11, 12, 13, 14]
-            print("DamnBreak")
-            data = vtpReader(r"./data/DamnBreak/Results/", 654)
+            print("Dam Break")
+            data = vtpReader(r"./data/DamBreak/", 654)
             size = len(data)
             maximum = data.max(axis=0) - data.min(axis=0)
             for qb in qbs:
@@ -312,7 +312,7 @@ def testCPU():
                 decoded = decoded[ids]
                 draco = len(encoded) * 8
                 print(draco/size, realPSNR(data, decoded))
-                encoded = callDraco(data, qb=qb, origin=False, byte=True)
+                encoded = callDraco(data, qb=qb, byte=True)
                 decoded = DracoPy.decode(encoded).points
                 draco = len(encoded) * 8
                 print(draco/size, realPSNR(data, decoded))
@@ -338,11 +338,11 @@ def testCPU():
 
 def testGPU():
       qbs = [11, 12, 13, 14]
-      print("DamnBreak")
+      print("Dam Break")
       random.seed(42)
       ts = [2, 2, 16, 2]
       ps = [2, 4, 16, 16]
-      data = vtpReader(r"./data/DamnBreak/Results/", 654)
+      data = vtpReader(r"./data/DamBreak/", 654)
       size = len(data)
       maximum = data.max(axis=0) - data.min(axis=0)
       for qb in qbs:
@@ -357,11 +357,11 @@ def testAblation():
     ts = [4, 25, 22, 25]
     ps = [256, 4, 16, 16]
     missing = [325, 412, 450, 476, 486, 499, 550, 555, 598, 604, 648, 664, 696, 702, 793, 875, 951]
-    data = vtpReader(r"./data/DamnBreak/Results/", 654)
+    data = vtpReader(r"./data/DamBreak/", 654)
     size = len(data)
     maximum = data.max(axis=0) - data.min(axis=0)
     eb = equivalent_eb(maximum, 10)
-    callChainCPPTest(data, 10, eb)
+    callChainCPPAblation(data, 10, eb)
 
 
 testCPU()
