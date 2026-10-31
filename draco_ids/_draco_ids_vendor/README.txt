@@ -1,0 +1,1 @@
+Google Draco 1.5.7 from DracoPy 2.1.0 source distribution. Includes out-of-band particle ID tracking modifications (see draco_id_tracking.patch). Original licenses preserved. Source distribution SHA256: 677fb7008468b856fdbbb431470ce102f00b82d5991b2a5c618734fbb908d635.
